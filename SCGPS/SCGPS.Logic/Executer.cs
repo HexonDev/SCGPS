@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using SCGPS.Data;
+using SCGPS.Domain;
 using SCGPS.Domain.Commands;
 using SCGPS.Domain.Exceptions;
 using SCGPS.Domain.Results;
@@ -50,7 +51,7 @@ namespace SCGPS.Logic
             }
             catch (Exception ex)
             {
-                result.Exception = ex;
+                result.Exception = ex.GetException();
                 result.IsSucceded = false;
 
                 if(context.Database.CurrentTransaction != null && level == 1)
@@ -84,7 +85,7 @@ namespace SCGPS.Logic
             }
             else
             {
-                if (command is not ServiceCommand)
+                if (command is not EmptyCommand)
                 {
                     throw new InvalidOperationException($"Nem található validátor: {command.GetType().Name}");
                 }
