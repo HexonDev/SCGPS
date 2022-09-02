@@ -1,0 +1,14 @@
+<h1>
+    Movie reviews
+</h1>
+
+<a routerLink="/home" mat-button color="primary">Home</a>
+
+<div fxLayout="column">
+    <ng-container *ngIf="(reviews?.length ?? 0) == 0">
+        <h3>There are no review to display</h3>
+    </ng-container>
+    <div *ngFor="let review of reviews" class="content-box">
+        <p>{{ review.reviewText }}</p>
+    </div>
+</div>

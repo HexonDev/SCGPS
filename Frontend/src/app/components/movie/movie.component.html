@@ -1,0 +1,21 @@
+<div fxLayout="row" class="content-box" fxLayoutAlign="none">
+    <div fxLayout="row" fxFlex>
+        <img [src]="poster" width="200" height="200">
+    </div>
+    <div fxLayout="column" fxFlex="80">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="15">
+            <h3><a [routerLink]="['/reviews', id]">{{ title }}</a></h3>
+            <p class="genres">({{ year | date: 'YYYY' }}, {{ genres }})</p>
+        </div>
+        <div fxLayout="row" fxFlex="20">
+            <p class="actors">{{ actors }}</p>
+        </div>
+        <div fxLayout="row" fxFlex="60">
+            <p class="desc">{{ plot }}</p>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-between end" fxFlex="20">
+        <star-rating [starType]="'svg'" [rating]="(rating ?? 0) / 2" [showHalfStars]="true" [staticColor]="'ok'" [readOnly]="true"></star-rating>
+        <a [routerLink]="['/review', id]" mat-button color="primary">Write review</a>
+    </div>
+</div>

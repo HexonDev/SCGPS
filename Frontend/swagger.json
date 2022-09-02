@@ -1,0 +1,379 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SCGPS.Web",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoviesDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoviesDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoviesDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovieTitleDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovieTitleDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovieTitleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Reviews": {
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MovieDto": {
+        "type": "object",
+        "properties": {
+          "isSucceded": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errorDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "genre": {
+            "type": "string",
+            "nullable": true
+          },
+          "actors": {
+            "type": "string",
+            "nullable": true
+          },
+          "posterUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "plot": {
+            "type": "string",
+            "nullable": true
+          },
+          "imdbRating": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentRating": {
+            "type": "number",
+            "format": "float"
+          },
+          "maxRating": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MoviesDto": {
+        "type": "object",
+        "properties": {
+          "isSucceded": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errorDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "movies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MovieDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovieTitleDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Order": {
+        "enum": [
+          65,
+          68
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ReviewDto": {
+        "type": "object",
+        "properties": {
+          "isSucceded": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errorDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "movieId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reviewText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReviewsDto": {
+        "type": "object",
+        "properties": {
+          "isSucceded": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errorDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReviewDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

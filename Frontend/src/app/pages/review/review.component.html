@@ -1,0 +1,12 @@
+<h1>Review</h1>
+
+<a routerLink="/home" mat-button color="primary">Home</a>
+
+<div fxLayout="column">
+    <mat-form-field appearance="fill">
+        <mat-label>Write a review</mat-label>
+        <textarea matInput [(ngModel)]="reviewText"></textarea>
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="addReview()">Add Review</button>
+</div>

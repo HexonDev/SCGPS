@@ -1,0 +1,21 @@
+<h1>
+    Movies in database
+</h1>
+
+<div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field appearance="fill">
+        <mat-label>Movie title</mat-label>
+        <input matInput [(ngModel)]="movieTitle">
+    </mat-form-field>
+    
+    <button mat-button color="primary" (click)="addMovie()">Add movie</button>
+</div>
+
+<div fxLayout="column">
+    <ng-container *ngIf="(movies?.length ?? 0) == 0">
+        <h2>No movies in our database!</h2>
+    </ng-container>
+    <ng-container *ngFor="let movie of movies">
+        <app-movie [rating]="movie.currentRating" [poster]="movie.posterUrl" [title]="movie.title" [year]="movie.year" [actors]="movie.actors" [genres]="movie.genre" [plot]="movie.plot" [id]="movie.id"></app-movie>
+    </ng-container>
+</div>

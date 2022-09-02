@@ -1,0 +1,18 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~css-star-rating/scss/star-rating';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.content-box {
+    width: 100%;
+    box-shadow: 0px 3px 10px #00000029;
+    border-radius: 9px;
+    opacity: 1;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 15px;
+}
+
+.behind {
+    z-index: 10;
+}
