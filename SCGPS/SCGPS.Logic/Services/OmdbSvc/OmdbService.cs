@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using SCGPS.Domain.Commands.OmdbSvc;
+using SCGPS.Domain.Enums;
 using SCGPS.Domain.Exceptions;
 using SCGPS.Domain.Results;
 using System;
@@ -15,21 +17,23 @@ namespace SCGPS.Logic.Services.OmdbSvc
     {
         private readonly IExecuter executer;
         private readonly IHttpClientFactory httpClientFactory;
+        private readonly IConfiguration configuration;
 
-        public OmdbService(IExecuter executer, IHttpClientFactory httpClientFactory)
+        public OmdbService(IExecuter executer, IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             this.executer = executer ?? throw new ArgumentNullException(nameof(executer));
             this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            this.configuration = configuration;
         }
 
         public async Task<SimpleResult<OmdbMovie>> GetOmdbMovieByTitleAsync(GetOmdbMovieCommand command)
         {
             return await executer.ExecuteAsync(command, this.GetType(), async param =>
             {
-                var url = QueryHelpers.AddQueryString("http://www.omdbapi.com", new Dictionary<string, string?>
+                var url = QueryHelpers.AddQueryString(configuration["Omdb:ApiUrl"], new Dictionary<string, string?>
                 {
                     { "t", param.Title },
-                    { "apikey", "80e8671d" }
+                    { "apikey", configuration["Omdb:Key"] }
                 });
 
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -38,11 +42,16 @@ namespace SCGPS.Logic.Services.OmdbSvc
                 var repsonseMessage = await httpClient.SendAsync(requestMessage);
                 var responseContent = await repsonseMessage.Content.ReadAsStringAsync();
 
+                if (!repsonseMessage.IsSuccessStatusCode)
+                {
+                    throw new ScGpsException(ErrorCodes.OmdbServiceOmdbFetchFailed);
+                }
+
                 var omdbMovie = JsonSerializer.Deserialize<OmdbMovie>(responseContent);
 
                 if(omdbMovie == null)
                 {
-                    throw new ScGpsException(Domain.Enums.ErrorCodes.ServiceGeneralEntityNotFound);
+                    throw new ScGpsException(ErrorCodes.OmdbServiceMovieNotFound);
                 }
 
                 return new SimpleResult<OmdbMovie>()

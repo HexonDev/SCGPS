@@ -33,6 +33,7 @@ namespace SCGPS.Logic.Services.ReviewSvc
             return await executer.ExecuteAsync(command, this.GetType(), async param =>
             {
                 var movieResult = await movieService.GetByIdAsync(new(param.MovieId));
+                movieResult.ThrowIfNotSucceded();
                 var movie = movieResult.Entity;
 
                 if (movie == null)

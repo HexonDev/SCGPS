@@ -41,6 +41,7 @@ namespace SCGPS.Logic.Services.MovieSvc
                 if(movie == null)
                 {
                     var omdbMovieResult = await omdbService.GetOmdbMovieByTitleAsync(new() { Title = param.Title });
+                    omdbMovieResult.ThrowIfNotSucceded();
 
                     var imdbRating = omdbMovieResult.Result.Ratings.FirstOrDefault(r => r.Source == "Internet Movie Database")?.Value;
 
@@ -52,9 +53,11 @@ namespace SCGPS.Logic.Services.MovieSvc
                         Title = omdbMovieResult.Result.Title,
                         Year = DateTime.Parse($"{omdbMovieResult.Result.Year}-01-01"),
                         ImdbRating = imdbRating,
+                        Plot = omdbMovieResult.Result.Plot
                     };
 
                     var movieEntityResult = await AddOrModifyAsync(new() { Entity = newMovie });
+                    movieEntityResult.ThrowIfNotSucceded();
                     movie = movieEntityResult.Entity;
                 }
             
