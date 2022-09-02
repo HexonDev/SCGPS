@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCGPS.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,18 @@ namespace SCGPS.Domain.Results
 {
     public class ServiceResult : IServiceResult
     {
-        public Exception Exception { get; set; }
+        public ScGpsException Exception { get; set; }
         public bool IsSucceded { get; set; }
         public DateTime Time { get; set; }
+
+        public void ThrowIfNotSucceded()
+        {
+            if (IsSucceded)
+            {
+                return;
+            }
+
+            throw Exception;
+        }
     }
 }
