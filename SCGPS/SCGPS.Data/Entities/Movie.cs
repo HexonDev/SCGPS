@@ -14,6 +14,7 @@ namespace SCGPS.Data.Entities
         public string Actors { get; set; }
         public string PosterUrl { get; set; }
         public string ImdbRating { get; set; }
+        public string Plot { get; set; }
 
         ICollection<Review> Reviews { get; set;}
     }
