@@ -8,7 +8,7 @@ namespace SCGPS.Domain.Dto
 {
     public class ReviewDto : BaseIdDto
     {
-        public ulong MovieId { get; set; }
+        public uint MovieId { get; set; }
         public string ReviewText { get; set; }
     }
 }

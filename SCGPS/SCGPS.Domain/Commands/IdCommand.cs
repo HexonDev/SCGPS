@@ -8,9 +8,9 @@ namespace SCGPS.Domain.Commands
 {
     public class IdCommand : ServiceCommand
     {
-        public ulong Id { get; set; }
+        public uint Id { get; set; }
 
-        public IdCommand(ulong id)
+        public IdCommand(uint id)
         {
             Id = id;
         }

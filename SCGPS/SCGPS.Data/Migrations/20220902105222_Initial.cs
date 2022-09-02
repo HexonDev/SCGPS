@@ -13,14 +13,15 @@ namespace SCGPS.Data.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    Id = table.Column<ulong>(type: "INTEGER", nullable: false)
+                    Id = table.Column<uint>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Genre = table.Column<string>(type: "TEXT", nullable: false),
                     Actors = table.Column<string>(type: "TEXT", nullable: false),
                     PosterUrl = table.Column<string>(type: "TEXT", nullable: false),
-                    ImdbRating = table.Column<float>(type: "REAL", nullable: false),
+                    ImdbRating = table.Column<string>(type: "TEXT", nullable: false),
+                    Plot = table.Column<string>(type: "TEXT", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Modified = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -33,9 +34,9 @@ namespace SCGPS.Data.Migrations
                 name: "Reviews",
                 columns: table => new
                 {
-                    Id = table.Column<ulong>(type: "INTEGER", nullable: false)
+                    Id = table.Column<uint>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    MovieId = table.Column<ulong>(type: "INTEGER", nullable: false),
+                    MovieId = table.Column<uint>(type: "INTEGER", nullable: false),
                     ReviewText = table.Column<string>(type: "TEXT", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Modified = table.Column<DateTime>(type: "TEXT", nullable: false)

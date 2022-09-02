@@ -8,6 +8,6 @@ namespace SCGPS.Domain.Commands.ReviewSvc
 {
     public class GetReviewsCommand : ServiceCommand
     {
-        public ulong? MovieId { get; set; }
+        public uint? MovieId { get; set; }
     }
 }

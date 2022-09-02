@@ -19,7 +19,7 @@ namespace SCGPS.Data.Migrations
 
             modelBuilder.Entity("SCGPS.Data.Entities.Movie", b =>
                 {
-                    b.Property<ulong>("Id")
+                    b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -63,7 +63,7 @@ namespace SCGPS.Data.Migrations
 
             modelBuilder.Entity("SCGPS.Data.Entities.Review", b =>
                 {
-                    b.Property<ulong>("Id")
+                    b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -73,7 +73,7 @@ namespace SCGPS.Data.Migrations
                     b.Property<DateTime>("Modified")
                         .HasColumnType("TEXT");
 
-                    b.Property<ulong>("MovieId")
+                    b.Property<uint>("MovieId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ReviewText")

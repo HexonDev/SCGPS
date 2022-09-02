@@ -35,7 +35,7 @@ namespace SCGPS.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ReviewsDto>> GetReviews(ulong? movieId)
+        public async Task<ActionResult<ReviewsDto>> GetReviews(uint? movieId)
         {
             var result = await reviewService.GetReviewsAsync(new()
             {

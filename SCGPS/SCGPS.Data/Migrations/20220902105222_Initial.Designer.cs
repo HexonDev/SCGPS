@@ -11,7 +11,7 @@ using SCGPS.Data;
 namespace SCGPS.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220831164941_Initial")]
+    [Migration("20220902105222_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace SCGPS.Data.Migrations
 
             modelBuilder.Entity("SCGPS.Data.Entities.Movie", b =>
                 {
-                    b.Property<ulong>("Id")
+                    b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -36,10 +36,15 @@ namespace SCGPS.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("ImdbRating")
-                        .HasColumnType("REAL");
+                    b.Property<string>("ImdbRating")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Modified")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Plot")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PosterUrl")
@@ -60,7 +65,7 @@ namespace SCGPS.Data.Migrations
 
             modelBuilder.Entity("SCGPS.Data.Entities.Review", b =>
                 {
-                    b.Property<ulong>("Id")
+                    b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -70,7 +75,7 @@ namespace SCGPS.Data.Migrations
                     b.Property<DateTime>("Modified")
                         .HasColumnType("TEXT");
 
-                    b.Property<ulong>("MovieId")
+                    b.Property<uint>("MovieId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ReviewText")

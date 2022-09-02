@@ -8,6 +8,6 @@ namespace SCGPS.Domain.Dto
 {
     public class BaseIdDto : BaseDto
     {
-        public ulong Id { get; set; }
+        public uint Id { get; set; }
     }
 }
