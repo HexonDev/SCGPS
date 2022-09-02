@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
+using SCGPS.Domain;
 using SCGPS.Domain.Commands.OmdbSvc;
 using SCGPS.Domain.Enums;
 using SCGPS.Domain.Exceptions;
@@ -49,7 +50,7 @@ namespace SCGPS.Logic.Services.OmdbSvc
 
                 var omdbMovie = JsonSerializer.Deserialize<OmdbMovie>(responseContent);
 
-                if(omdbMovie == null)
+                if(omdbMovie == null || responseContent.Contains(Constants.MovieNotFoundResponse))
                 {
                     throw new ScGpsException(ErrorCodes.OmdbServiceMovieNotFound);
                 }
