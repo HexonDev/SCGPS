@@ -38,7 +38,7 @@ namespace SCGPS.Logic
 
             try
             {
-                await ValidateAsync(command);
+                //await ValidateAsync(command);
 
                 result = await func(command);
 

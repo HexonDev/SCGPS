@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SCGPS.Logic.MappingProfiles
 {
-    internal class OmdMovieProfile : Profile
+    public class OmdMovieProfile : Profile
     {
         public OmdMovieProfile()
         {

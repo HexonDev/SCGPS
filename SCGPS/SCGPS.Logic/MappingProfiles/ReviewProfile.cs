@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SCGPS.Logic.MappingProfiles
 {
-    internal class ReviewProfile : Profile
+    public class ReviewProfile : Profile
     {
         public ReviewProfile()
         {

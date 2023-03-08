@@ -6,7 +6,7 @@ using SCGPS.Domain.Results;
 
 namespace SCGPS.Logic.MappingProfiles
 {
-    internal class MovieProfile : Profile
+    public class MovieProfile : Profile
     {
         public MovieProfile()
         {

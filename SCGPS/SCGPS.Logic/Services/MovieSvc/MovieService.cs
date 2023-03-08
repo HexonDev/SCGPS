@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace SCGPS.Logic.Services.MovieSvc
 {
-    internal class MovieService : EntityService<Movie>, IMovieService
+    public class MovieService : EntityService<Movie>, IMovieService
     {
         private readonly IExecuter executer;
         private readonly IAppDbContext context;

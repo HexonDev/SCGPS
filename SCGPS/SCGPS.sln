@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCGPS.Data", "SCGPS.Data\SC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCGPS.Logic", "SCGPS.Logic\SCGPS.Logic.csproj", "{75E287F5-3C86-4B22-B1DC-9F0DC392B041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCGPS.Domain", "SCGPS.Domain\SCGPS.Domain.csproj", "{7CC5532B-9AFC-4692-9AF2-5F74D0446CD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCGPS.Domain", "SCGPS.Domain\SCGPS.Domain.csproj", "{7CC5532B-9AFC-4692-9AF2-5F74D0446CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPGS.Tests", "SCPGS.Tests\SCPGS.Tests.csproj", "{D19EF287-2453-4A52-AE69-9ECEE17BA685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7CC5532B-9AFC-4692-9AF2-5F74D0446CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC5532B-9AFC-4692-9AF2-5F74D0446CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC5532B-9AFC-4692-9AF2-5F74D0446CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19EF287-2453-4A52-AE69-9ECEE17BA685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19EF287-2453-4A52-AE69-9ECEE17BA685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19EF287-2453-4A52-AE69-9ECEE17BA685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19EF287-2453-4A52-AE69-9ECEE17BA685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
